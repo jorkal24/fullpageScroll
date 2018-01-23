@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            font-size: 30px;
+            color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+
+    <script>
+        
+        var divs = document.querySelectorAll('div');
+        var screenHeight = window.innerHeight || document.documentElement.clentHeight || document.body.clientHeight;
+        for(var i = 0; i < divs.length; i++){
+            divs[i].style.height =  screenHeight + 'px';
+        }
+
+        var index = 0;
+        window.onmousewheel = function (e){
+            e = e || windwo.event
+            e.preventDefault();
+            if(index < 0) {
+                index = 0;
+                return false;
+            }
+            if(e.deltaY > 0) {
+                index++;
+            }else if(e.deltaY < 0) {
+                index--;
+            }
+            console.log(index)
+            
+            // document.body.scrollTop = index * screenHeight;
+            document.documentElement.scrollTop = index * screenHeight;
+            // window.scrollTop = index * screenHeight;
+            console.log(window.screenTop)
+        }
+        
+    </script>
+</body>
+</html>
